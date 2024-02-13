@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dothraki Translator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dothraki Translator</h1>
+    
+    <form action="/translate" method="post">
+        <label for="english_text">Texto em Inglês:</label>
+        <input type="text" id="english_text" name="english_text" required>
+        <br>
+        <button type="submit">Traduzir</button>
+    </form>
+
+    {% if english_text %}
+    <p>Texto original: {{ english_text }}</p>
+    {% endif %}
+    
+    {% if translated_text %}
+    <p>Texto traduzido para Dothraki: {{ translated_text }}</p>
+    {% endif %}
+</body>
+</html>
