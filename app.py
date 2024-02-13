@@ -13,7 +13,7 @@ def translate_to_dothraki(text, api_key=None):
     if api_key:
         headers['X-Funtranslations-Api-Secret'] = api_key
     
-    payload = {'text': text}
+    payload = {'text': f"{text}"}
     
     try:
         response = requests.post(base_url, headers=headers, json=payload)

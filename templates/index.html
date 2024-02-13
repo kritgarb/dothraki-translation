@@ -92,7 +92,7 @@
 
         <form action="/translate" method="post">
             <div class="form-group">
-                <label for="english_text">Texto em Inglês:</label>
+                <p>Texto original: {{ english_text | safe }}</p>
                 <input type="text" class="form-control" id="english_text" name="english_text" required>
             </div>
             <button type="submit" class="btn btn-danger">Traduzir</button>
