@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request
+from flask_bootstrap import Bootstrap
 import requests
 
 app = Flask(__name__)
+Bootstrap(app)
 
 def translate_to_dothraki(text, api_key=None):
     base_url = "https://api.funtranslations.com/translate/dothraki.json"

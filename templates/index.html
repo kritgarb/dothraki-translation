@@ -4,10 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dothraki Translator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">  <!-- Adicione o link para o Bootstrap CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Cinzel Decorative', cursive;
+            background-color: #212529;
+            color: #ffffff;
             margin: 20px;
+        }
+        h1 {
+            color: #d9534f;
+        }
+        label {
+            color: #ffffff;
         }
         input, button {
             margin-bottom: 10px;
@@ -15,21 +25,32 @@
     </style>
 </head>
 <body>
-    <h1>Dothraki Translator</h1>
-    
-    <form action="/translate" method="post">
-        <label for="english_text">Texto em Inglês:</label>
-        <input type="text" id="english_text" name="english_text" required>
-        <br>
-        <button type="submit">Traduzir</button>
-    </form>
+    <div class="container">
+        <h1>Dothraki Translator</h1>
+        
+        <form action="/translate" method="post">
+            <div class="form-group">
+                <label for="english_text">Texto em Inglês:</label>
+                <input type="text" class="form-control" id="english_text" name="english_text" required>
+            </div>
+            <button type="submit" class="btn btn-danger">Traduzir</button>
+        </form>
 
-    {% if english_text %}
-    <p>Texto original: {{ english_text }}</p>
-    {% endif %}
-    
-    {% if translated_text %}
-    <p>Texto traduzido para Dothraki: {{ translated_text }}</p>
-    {% endif %}
+        {% if english_text %}
+        <div class="alert alert-info mt-3">
+            <p>Texto original: {{ english_text }}</p>
+        </div>
+        {% endif %}
+        
+        {% if translated_text %}
+        <div class="alert alert-success mt-3">
+            <p>Texto traduzido para Dothraki: {{ translated_text }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>  <!-- Adicione os scripts do Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
