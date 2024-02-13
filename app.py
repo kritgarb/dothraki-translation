@@ -1,10 +1,9 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash, redirect, url_for
 from requests.exceptions import ConnectionError, RequestException
-from flask_bootstrap import Bootstrap
 import requests
 
 app = Flask(__name__)
-Bootstrap(app)
+app.secret_key = "sua_chave_secreta"  # Substitua pela sua chave secreta
 
 def translate_to_dothraki(text, api_key=None):
     base_url = "https://api.funtranslations.com/translate/dothraki.json"
@@ -13,7 +12,7 @@ def translate_to_dothraki(text, api_key=None):
     if api_key:
         headers['X-Funtranslations-Api-Secret'] = api_key
     
-    payload = {'text': f"{text}"}
+    payload = {'text': text}
     
     try:
         response = requests.post(base_url, headers=headers, json=payload)
@@ -47,7 +46,11 @@ def translate():
     api_key = None  # Substitua pela sua chave de API
 
     translated_text = translate_to_dothraki(english_text, api_key)
-    return render_template('index.html', english_text=english_text, translated_text=translated_text)
+
+    # Exemplo de uso do flash para exibir uma mensagem na interface
+    flash('Tradução realizada com sucesso!', 'success')
+
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
